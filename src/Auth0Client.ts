@@ -33,7 +33,7 @@ export default class Auth0Client {
   private transactionManager: TransactionManager;
   private domainUrl: string;
   private tokenIssuer: string;
-  private readonly DEFAULT_SCOPE = 'openid profile email';
+  private readonly DEFAULT_SCOPE = 'openid profile';
 
   constructor(private options: Auth0ClientOptions) {
     this.cache = new Cache();
@@ -500,7 +500,7 @@ export default class Auth0Client {
     ClientStorage.remove('auth0.is.authenticated');
     const { federated, ...logoutOptions } = options;
     const federatedQuery = federated ? `&federated` : '';
-    const url = this._url(`/v2/logout?${createQueryParams(logoutOptions)}`);
+    const url = this._url(`/logout?${createQueryParams(logoutOptions)}`);
     window.location.assign(`${url}${federatedQuery}`);
   }
 }

@@ -197,7 +197,7 @@ const getJSON = async (url, options) => {
 };
 
 export const oauthToken = async ({ baseUrl, ...options }: OAuthTokenOptions) =>
-  await getJSON(`${baseUrl}/oauth/token`, {
+  await getJSON(`${baseUrl}/oauth2/token`, {
     method: 'POST',
     body: JSON.stringify({
       grant_type: 'authorization_code',
